@@ -1,5 +1,5 @@
 metadata {
-	definition(name: "Sonoff-Tasmota-Lighting", namespace: "AurelioSaraiva", author: "Aurélio Saraiva") {
+	definition(name: "Sonoff-Tasmota-Lighting", namespace: "AurelioSaraiva", author: "Aurélio Saraiva", ocfDeviceType: "oic.d.light") {
 		capability "Actuator"
 		capability "Switch"
 		capability "Refresh"
@@ -9,10 +9,10 @@ metadata {
 	tiles(scale: 2) {
 		multiAttributeTile(name:"switch", type: "lighting", width: 1, height: 1, canChangeIcon: true){
 			tileAttribute ("device.switch", key: "PRIMARY_CONTROL") {
-				attributeState("on", label:'${name}', action:"switch.off", icon:"st.Lighting.light11", backgroundColor:"#00a0dc", nextState:"off")
-				attributeState("off", label:'${name}', action:"switch.on", icon:"st.Lighting.light11", backgroundColor:"#ffffff", nextState:"on")
-				attributeState("turningOn", label:'${name}', action:"switch.off", icon:"st.Lighting.light11", backgroundColor:"#00a0dc", nextState:"off")
-				attributeState("turningOff", label:'${name}', action:"switch.on", icon:"st.Lighting.light11", backgroundColor:"#ffffff", nextState:"on")
+            	attributeState "on", label:'${name}', action:"switch.off", icon:"st.switches.light.on", backgroundColor:"#00A0DC", nextState:"turningOff"
+                attributeState "off", label:'${name}', action:"switch.on", icon:"st.switches.light.off", backgroundColor:"#ffffff", nextState:"turningOn"
+                attributeState "turningOn", label:'${name}', action:"switch.off", icon:"st.switches.light.on", backgroundColor:"#00A0DC", nextState:"turningOff"
+                attributeState "turningOff", label:'${name}', action:"switch.on", icon:"st.switches.light.off", backgroundColor:"#ffffff", nextState:"turningOn"
 			}
 		}
 
